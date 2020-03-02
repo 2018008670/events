@@ -18,153 +18,81 @@
     <title>NZ Events/Home</title>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <a href="home">   <img src="logo.png"  alt="" class="center"></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <a href="home">   <img src="logo.png"  alt="" class="center"></a>
 
-
-        <ul class="navbar-nav mr-auto">
-            <a class="navbar-brand" href="welcome">Home <span class="sr-only">(current)</span></a>
-            <li class="nav-item">
-              <a class="navbar-brand" href="eventList">Event</a>
-            </li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 
-          <li class="nav-item">
-            <a class="navbar-brand" href="aboutus">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="navbar-brand" href="contactUs">Contact Us</a>
-          </li>
-          @if(Auth::check())
-
-          @if (Auth::user()->admin)
-          <li class="nav-item">
-            <a class="navbar-brand" href="messageTable">Message by customers</a>
-          </li>
-          @endif
-          @endif
-        </ul>
-        @guest
+            <ul class="navbar-nav mr-auto">
+                <a class="navbar-brand" href="welcome">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                  <a class="navbar-brand" href="eventList">Event</a>
+                </li>
 
 
-        <form action="/login" class="form-inline my-2 my-lg-0">
-          <button class="btn btn-primary btn-lg" >Log in</button>
-        </form>
-          @if (Route::has('register'))
-          <form action="/register" class="form-inline my-2 my-lg-0">
-            <button class="btn btn-primary btn-lg" >Register</button>
-          </form>
-          @endif
-      @else
-        <div class="navbar-brand">
+              <li class="nav-item">
+                <a class="navbar-brand" href="aboutus">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="navbar-brand" href="contactUs">Contact Us</a>
+              </li>
+              @if(Auth::check())
+
+              @if (Auth::user()->admin)
+              <li class="nav-item">
+                <a class="navbar-brand" href="messageTable">Message by customers</a>
+              </li>
+              @endif
+              @endif
+            </ul>
+            @guest
 
 
-                  {{ Auth::user()->name }}
+            <form action="/login" class="form-inline my-2 my-lg-0">
+              <button class="btn btn-primary btn-lg" >Log in</button>
+            </form>
+              @if (Route::has('register'))
+              <form action="/register" class="form-inline my-2 my-lg-0">
+                <button class="btn btn-primary btn-lg" >Register</button>
+              </form>
+              @endif
+          @else
+            <div class="navbar-brand">
 
-</div>
 
-                  <a  href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
+                      {{ Auth::user()->name }}
+
+    </div>
+
+                      <a  href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
 
 
 
-                    <button class="btn btn-primary btn-lg" >  {{ __('Logout') }}</button>
+                        <button class="btn btn-primary btn-lg" >  {{ __('Logout') }}</button>
 
-                  </a>
+                      </a>
 
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      @csrf
-                  </form>
-              </div>
-          </li>
-      @endguest
-        </div>
-    </nav>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
+          @endguest
+            </div>
+        </nav>
 
 </head>
 
 <body>
+<div class="container">
+  <img src="thanks.jpeg" alt=""height="300px;" width="300px;">
+</div>
 
-  <div id="GetOfferModal" class="modal fade modal-get-offer" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              </div>
-              <div class="modal-body">
-                  <form class="form" role="form" autocomplete="off" id="formGetOffer" novalidate="" method="POST">
-                    <Center><h3>Login</h3>
-                      <div class="form-group">
-                          <input type="text" class="form-control" name="uname1" id="uname1" required="" placeholder="LoginID">
-                          <div class="invalid-feedback">Oops, you missed this one.</div>
-                      </div>
-                      <div class="form-group">
-                          <input type="tel" class="form-control" id="pwd1" required="" placeholder="Password">
-                          <div class="invalid-feedback">Enter your password too!</div>
-                      </div>
-
-                      <div class="form-group py-4">
-                          <button type="submit" class="btn btn-success" id="btnGetOffer">Login</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <script type="text/javascript">
-  $("#btnGetOffer").click(function(event) {
-
-   //Fetch form to apply custom Bootstrap validation
-   var form = $("#formGetOffer")
-
-   if (form[0].checkValidity() === false) {
-     event.preventDefault()
-     event.stopPropagation()
-   }
-
-   form.addClass('was-validated');
- });
-
-
-  </script>
-
-  <div class="overlay">
-
-  <video class="vdo "playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="new zealand.mp4" type="video/mp4">
-  </video>
-
-
-    </div>
-
-
-
-<section class="my-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 mx-auto">
-<p>NZ Events is the New Zealand based company which was launched in 2019. This is the platfrom where you can promote your event in wide range of mass. It will also help you to upgrade Your event and run smoothly.</p>
-  <form  action="/register" >
-
-
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
-
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-<br>
-<br>
-<br>
-
-</body>
 
 <ul class="nav1 justify-content-center">
   <br>
@@ -178,4 +106,3 @@
 </ul>
 
 </html>
-

@@ -4,8 +4,7 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="home.css">
-
+    <link rel="stylesheet" href="aboutus.css">
     <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -18,76 +17,78 @@
     <title>NZ Events/Home</title>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-  <a href="home">   <img src="logo.png"  alt="" class="center"></a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
-        <ul class="navbar-nav mr-auto">
-            <a class="navbar-brand" href="welcome">Home <span class="sr-only">(current)</span></a>
-            <li class="nav-item">
-              <a class="navbar-brand" href="eventList">Event</a>
-            </li>
-
-
-          <li class="nav-item">
-            <a class="navbar-brand" href="aboutus">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="navbar-brand" href="contactUs">Contact Us</a>
-          </li>
-          @if(Auth::check())
-
-          @if (Auth::user()->admin)
-          <li class="nav-item">
-            <a class="navbar-brand" href="messageTable">Message by customers</a>
-          </li>
-          @endif
-          @endif
-        </ul>
-        @guest
-
-
-        <form action="/login" class="form-inline my-2 my-lg-0">
-          <button class="btn btn-primary btn-lg" >Log in</button>
-        </form>
-          @if (Route::has('register'))
-          <form action="/register" class="form-inline my-2 my-lg-0">
-            <button class="btn btn-primary btn-lg" >Register</button>
-          </form>
-          @endif
-      @else
-        <div class="navbar-brand">
-
-
-                  {{ Auth::user()->name }}
-
-</div>
-
-                  <a  href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
 
 
 
-                    <button class="btn btn-primary btn-lg" >  {{ __('Logout') }}</button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-                  </a>
+      <a href="home">   <img src="logo.png"  alt="" class="center"></a>
 
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      @csrf
-                  </form>
-              </div>
-          </li>
-      @endguest
-        </div>
-    </nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+
+            <ul class="navbar-nav mr-auto">
+                <a class="navbar-brand" href="welcome">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                  <a class="navbar-brand" href="eventList">Event</a>
+                </li>
+
+
+              <li class="nav-item">
+                <a class="navbar-brand" href="aboutus">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="navbar-brand" href="contactUs">Contact Us</a>
+              </li>
+              @if(Auth::check())
+
+              @if (Auth::user()->admin)
+              <li class="nav-item">
+                <a class="navbar-brand" href="messageTable">Message by customers</a>
+              </li>
+              @endif
+              @endif
+            </ul>
+            @guest
+
+
+            <form action="/login" class="form-inline my-2 my-lg-0">
+              <button class="btn btn-primary btn-lg" >Log in</button>
+            </form>
+              @if (Route::has('register'))
+              <form action="/register" class="form-inline my-2 my-lg-0">
+                <button class="btn btn-primary btn-lg" >Register</button>
+              </form>
+              @endif
+          @else
+            <div class="navbar-brand">
+
+
+                      {{ Auth::user()->name }}
+
+    </div>
+
+                      <a  href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+
+
+
+                        <button class="btn btn-primary btn-lg" >  {{ __('Logout') }}</button>
+
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
+          @endguest
+            </div>
+        </nav>
 </head>
 
-<body>
+<body style="background-color:#f8f9fa;">
 
   <div id="GetOfferModal" class="modal fade modal-get-offer" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
@@ -111,6 +112,7 @@
                       <div class="form-group py-4">
                           <button type="submit" class="btn btn-success" id="btnGetOffer">Login</button>
                       </div>
+
                   </form>
               </div>
           </div>
@@ -130,40 +132,38 @@
 
    form.addClass('was-validated');
  });
+</script>
 
+<div class="carousel1">
+  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
 
-  </script>
-
-  <div class="overlay">
-
-  <video class="vdo "playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="new zealand.mp4" type="video/mp4">
-  </video>
-
-
-    </div>
-
-
-
-<section class="my-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 mx-auto">
-<p>NZ Events is the New Zealand based company which was launched in 2019. This is the platfrom where you can promote your event in wide range of mass. It will also help you to upgrade Your event and run smoothly.</p>
-  <form  action="/register" >
-
-
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
-
-        </form>
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="a1.jpg" alt="First slide">
       </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="a3.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="a2.jpg" alt="Third slide">
+      </div>
+
     </div>
   </div>
-</section>
-<br>
-<br>
-<br>
-
+</div>
+<div class="content">
+  <center><h1>About Us</h1></center>
+  <br>
+<center><p>NZ Events is an event logistics and marketing company which was formed back in 2019.<br>
+  The company offers huge platfrom where a person can promote their event also get ideas of their event from a team of experienced and energetic event planners, suppliers, venues and more.<br>
+ One of the main reasons behind the success of the company is the fact that the team is highly experienced With the number of events we have supported in past, NZ Events is mostly focused on customer satisfaction rather then profit.
+ This ensures that our clients list, which is constantly growing, make regular use of our services.</p></center>
+</div>
 </body>
 
 <ul class="nav1 justify-content-center">
